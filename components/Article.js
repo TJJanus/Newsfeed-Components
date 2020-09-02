@@ -86,7 +86,17 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+
+  {
+    title: 'HTML and Doggo Ipsum',
+    date: 'Dec 3rd, 2019',
+    firstParagraph: `Doggo ipsum maximum borkdrive blep wow very biscit vvv aqua doggo, lotsa pats borkdrive. Big ol smol tungg vvv dat tungg tho smol borking doggo with a long snoot for pats borkf, wrinkler puggo pats ruff big ol pupper. Doggorino clouds most angery pupper I have ever seen big ol many pats I am bekom fat maximum borkdrive puggo puggorino stop it fren, blop doggorino borkdrive blop bork yapper maximum borkdrive shoob. Floofs very good spot snoot, you are doing me a frighten. Puggo he made many woofs stop it fren mlem borkf wrinkler, doggo clouds pupperino h*ck. Boofers heckin thicc long doggo, floofs.`,
+
+    secondParagraph: `pupper puggorino super chub. Much ruin diet boof long woofer blep doge shibe, the neighborhood pupper very jealous pupper noodle horse. doggo the neighborhood pupper vvv. Mlem bork extremely cuuuuuute corgo doggorino, heck sub woofer. Heckin angery woofer porgo sub woofer doge maximum borkdrive heckin, many pats tungg very good spot. Long bois heckin angery woofer dat tungg tho, length boy. Vvv such treat very good spot dat tungg tho, aqua doggo. Extremely cuuuuuute big ol pupper you are doin me a concern heck smol long water shoob what a nice floof, tungg maximum borkdrive puggo big ol pupper doggorino. Such treat pupper he made many woofs, woofer. Very jealous pupper lotsa pats big ol pupper length boy, most angery pupper I have ever seen yapper borkdrive snoot, stop it fren boof.`,
+
+    thirdParagraph: `The neighborhood pupper what a nice floof heckin good boys long water shoob doge doggo, shoober doing me a frighten wrinkler wow such tempt. Vvv what a nice floof smol borking doggo with a long snoot for pats adorable doggo borking doggo heckin good boys and girls you are doing me a frighten doing me a frighten boofers, wow such tempt woofer borking doggo you are doing me the shock much ruin diet smol borking doggo with a long snoot for pats. Very good spot wow very biscit floofs ruff ur givin me a spook, floofs wow very biscit.`
+  },
 ];
 
 /*
@@ -114,3 +124,60 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+function articleMaker(articleObj){
+  // Div element for article
+  const article = document.createElement('div')
+  article.classList.add('article')
+
+  // h2 title element class
+  const title = document.createElement('h2')
+  title.textContent = articleObj.title
+  article.appendChild(title)
+
+  // Date paragraph
+  const date = document.createElement('p')
+  date.classList.add('date')
+  date.textContent = articleObj.date
+  article.appendChild(date)
+  
+
+ //para1
+ const paragraph1 = document.createElement('p')
+ paragraph1.textContent = articleObj.firstParagraph
+ article.appendChild(paragraph1)
+ 
+
+ // para2
+ const paragraph2 = document.createElement('p')
+ paragraph2.textContent = articleObj.secondParagraph
+ article.appendChild(paragraph2)
+ 
+
+ //para3
+ const paragraph3 = document.createElement('p')
+ paragraph3.textContent = articleObj.thirdParagraph
+ article.appendChild(paragraph3)
+
+//span
+const span = document.createElement('span')
+span.classList.add('expandButton')
+span.textContent = '+'
+article.appendChild(span)
+
+span.addEventListener('click', event =>{
+  article.classList.toggle('article-open')
+})
+
+return article;
+ 
+}
+
+
+const articles = document.querySelector('.articles')
+
+
+// ForEach
+data.forEach(obj => {
+const articleElement = articleMaker(obj)
+articles.appendChild(articleElement)
+})
